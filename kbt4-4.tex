@@ -1,0 +1,65 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+%\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} %This changes the margins.
+\author{Kyohei Okumura}
+\begin{document}
+
+\title{第4章 問4}
+\author{Kyohei Okumura}
+\date{\today}
+\maketitle
+
+$f = \displaystyle{\sum_{k=0}^\infty f_k t^k}$が所与である。(i.e. $\{f_k\}$が所与。ただし、$f_k$は$f$をべき級数展開した際の係数。)
+
+$\displaystyle{ h_1(t):= \sin(f(t)) = \sum_{k=0}^\infty h_{1k}t^k, \;\; h_2 := \cos(f(t)) = \sum_{k=0}^\infty h_{2k}t^k}$とする。
+
+$h_1,h_2$をべき級数展開した際の係数$h_{1k}, h_{2k}$を$f_k(k=0,1,2 \cdots)$と$h_{i,j}(i=1,2, \;\; j=0,1,\cdots,k-1)$で表せばよい。
+
+まず、$h_{i}$を微分すれば、
+
+\begin{equation}
+h_1'(t) = f'(t) \cos(f(t)) = f'(t)h_2(t) = \sum_{k=0}^\infty \sum_{i=0}^k (f_i \cdot h_{2,k-i})t^k
+\end{equation}
+
+\begin{equation}
+h_2'(t) = -f'(t) \sin(f(t)) = -f'(t)h_1(t) = -\sum_{k=0}^\infty \sum_{i=0}^k (f_i \cdot h_{1,k-i})t^k
+\end{equation}
+
+を得る。
+
+めんどくさいので、以下、$h_1$についてのみ示す（$h_2$についても全く同様に示せる。）
+
+$\displaystyle{h_1'(t) = \sum_{k=0}^\infty h_{1k}'t^k}$と表せるとする。（つまり、$h_{1k}$は$h_1$をべき級数展開したときの係数。）
+
+このとき、
+
+\begin{equation}
+h_{1,k-1}' = kh_{1k}
+\end{equation}
+
+となることが示せる（教科書p.68。板書してもよい。）
+
+以上をまとめると、まず(1)より、
+
+\begin{equation}
+h_{1k}' = \sum_{i=0}^k f_i \cdot h_{2,k-i} (k=0,1,2,\cdots)
+\end{equation}
+
+となることがわかる。これと(3)を併せれば、
+
+\begin{equation}
+h_{1,k} = \frac{1}{k} \sum_{i=0}^{k-1} f_i \cdot h_{2,k-i} 
+\end{equation}
+となることがわかる。同様にして、
+\begin{equation}
+h_{2,k} = - \frac{1}{k} \sum_{i=0}^{k-1} f_i \cdot h_{1,k-i} 
+\end{equation}
+が示される。
+
+$h_{10} = \sin(f_0), h_{20} = \cos(f_0)$となることは定義より明らか。よって、(5)(6)より、$\{h_{1k}\},\{h_{2k}\}$を$k=0,1,2,\cdots$について帰納的に求めることができる。
+
+\end{document}
